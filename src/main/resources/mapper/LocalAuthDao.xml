@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.o2o.dao.LocalAuthDao">
+    <resultMap id="localAuthMap" type="com.example.o2o.entity.LocalAuth">
+        <id column="local_auth_id" property="localAuthId"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="create_time" property="createTime"/>
+        <result column="phone" property="phone"/>
+        <result column="shop_img" property="shopImg"/>
+        <result column="weight" property="weight"/>
+        <result column="create_time" property="createTime"/>
+        <result column="last_edit_time" property="lastEditTime"/>
+        <association property="personInfo" column="user_id" javaType="com.example.o2o.entity.PersonInfo">
+            <id column="user_id" property="userId"/>
+            <result column="name" property="name"/>
+        </association>
+    </resultMap>
+
+    <select id="queryLocalAuthByUserId" resultMap="localAuthMap">
+        select
+            la.local_auth_id,
+            la.user_name,
+            la.password,
+            la.create_time,
+            la.last_edit_time,
+            pi.user_id,
+            pi.name
+        from tb_local_auth la,tb_person_info pi
+        where la.user_id = #{userId}
+    </select>
+
+    <select id="queryLocalAuthByUserName" resultMap="localAuthMap">
+        select
+            la.local_auth_id,
+            la.user_name,
+            la.password,
+            la.create_time,
+            la.last_edit_time,
+            pi.user_id,
+            pi.name
+        from tb_local_auth la,tb_person_info pi
+        where
+            la.user_id = pi.user_id
+            and la.user_name = #{userName}
+    </select>
+</mapper>

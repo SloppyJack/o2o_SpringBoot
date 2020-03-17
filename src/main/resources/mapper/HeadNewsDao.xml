@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.o2o.dao.HeadNewsDao">
+    <select id="queryHeadNews" resultType="com.example.o2o.entity.HeadNews">
+        select news_id,news_name,news_link,news_img,weight,status,
+            create_time,last_edit_time
+        from tb_head_news
+        <where>
+            <if test="headNewsCondition.newsName != null">
+                news_name = #{headNewsCondition.newsName}
+            </if>
+            <if test="headNewsCondition.status != null">
+                status = #{headNewsCondition.status}
+            </if>
+        </where>
+        order by weight desc
+    </select>
+</mapper>
