@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 /**
  * @author: create by bin
  * @version: v1.0
- * @description: com.ssm.dao
+ * @description: com.example.o2o.dao
  * @date: 2020/3/5 19:47
  **/
 @Repository

@@ -1,4 +1,4 @@
-package com.example.o2o.dao;
+package com.example.o2o.service;
 
 
 import com.example.o2o.entity.Area;
@@ -15,18 +15,21 @@ import static org.junit.Assert.assertEquals;
 /**
  * @author: create by bin
  * @version: v1.0
- * @description: com.example.o2o.dao
+ * @description: com.example.o2o.com.example.o2o.service
  * @date:2019/7/24
  **/
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AreaDaoTest{
+public class AreaServiceTest{
     @Autowired
-    private AreaDao areaDao;
+    private AreaService areaService;
 
     @Test
-    public void testQueryArea(){
-        List<Area> areaList = areaDao.queryArea();
+    public void testAreaService(){
+        List<Area> areaList = areaService.getAreaList();
+        for (Area temp:areaList){
+            System.out.println(temp.getAreaName()+"--------------------------");
+        }
         assertEquals(2,areaList.size());
     }
 }

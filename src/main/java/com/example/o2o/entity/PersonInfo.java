@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * @author: create by bin
  * @version: v1.0
- * @description: com.ssm.entity 普通用户
+ * @description: com.example.o2o.entity 普通用户
  * @date:2019/7/24
  **/
 public class PersonInfo {
