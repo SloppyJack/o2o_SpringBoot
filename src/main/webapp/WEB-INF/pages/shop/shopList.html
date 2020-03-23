@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商铺列表</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm-extend.css">
+</head>
+<body>
+    <div class="page-group">
+        <div class="page page-current" id="pageShopList">
+            <header class="bar bar-nav">
+                <h1 class='title'>店铺操作</h1>
+            </header>
+            <div class="content">
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title color-danger" id="userName" ></div>
+                                    <a class="item-title" href="shopOperation" >增加店铺</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title" >店铺名称</div>
+                                    <div class="item-title">状态</div>
+                                    <div class="item-title">操作</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--店铺列表 -->
+                    <ul id="shop_content">
+
+                    </ul>
+                </div>
+                <div class="content-block" id="btn_exit">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='../resources/js/libs/sui/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../resources/js/libs/sui/sm.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../resources/js/common/dynamicLoading.js'></script>
+    <script type='text/javascript' src='../resources/js/shop/dynamicLoadingShopJs.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>UC转MP3</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current" id="pageShopOperation">
+        <header class="bar bar-nav">
+            <h1 class='title'>在线转换工具</h1>
+        </header>
+        <div class="content close-panel">
+            <div class="list-block">
+                <ul>
+                    <form action="song/download"  method="post" onsubmit="return check()" enctype="multipart/form-data">
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">此版本仅针对于网易云</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label color-danger">*网易云缓存文件</div>
+                                <div class="item-input">
+                                    <input name="song" id="song" type="file" class="file" data-preview-file-type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="row">
+                            <div class="col-100"><input type="submit" class="button button-big button-fill button-success" value="生成MP3"/></div>
+                        </div>
+                    </li>
+                    </form>
+                    <li>
+                        <div class="item-media"><i class="icon icon-form-name"></i></div>
+                        <div class="row">
+                            <div class="col-100"><a class="button button-big button-fill button-primary">帮助(如何使用)</a></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.fileDownload/1.4.2/jquery.fileDownload.min.js"></script>
+
+
+<script>
+    //判断上传文件是否为uc文件
+    function check(form) {
+        var song_data = $('#song').val();
+        var ext = song_data.slice(song_data.lastIndexOf(".")+1).toLowerCase();
+        if (song_data == null || song_data == "" ){
+            alert("请上传文件");
+            return false;
+        } else if ("uc" != ext) {
+            alert("只能上传网易云缓存文件");
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+</script>
+</body>
+</html>

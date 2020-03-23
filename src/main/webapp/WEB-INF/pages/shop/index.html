@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商铺列表</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>小小商店</title>
+    <!-- Google Web Fonts -->
+
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm-extend.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back">
+                <span class="icon icon-left"></span>
+                返回
+            </a>
+            <a class="icon icon-me open-panel pull-right" data-panel=".panel-right"></a>
+        </header>
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="#" onclick="loadModule(this,'index')" >
+                <span class="icon icon-home"></span>
+                <span class="tab-label">主页</span>
+            </a>
+            <a class="tab-item" href="#" onclick="loadModule(this,'shop')">
+                <span class="icon icon-me"></span>
+                <span class="tab-label">店铺</span>
+            </a>
+            <a class="tab-item" href="#" onclick="loadModule(this,'1')">
+                <span class="icon icon-star"></span>
+                <span class="tab-label">你好</span>
+            </a>
+            <a class="tab-item" href="#" onclick="loadModule(this,'2')">
+                <span class="icon icon-cart"></span>
+                <span class="tab-label">文案</span>
+            </a>
+            <a class="tab-item" onclick="loadModule(this,'3')">
+                <span class="icon icon-settings"></span>
+                <span class="tab-label">文案</span>
+            </a>
+        </nav>
+        <div class="content">
+            <iframe id="content" src="shopList"></iframe>
+        </div>
+    </div>
+</div>
+<!-- 个人中心-->
+<div class="panel panel-right panel-reveal">
+    <div class="content-block">
+        <p>个人信息</p>
+        <p></p>
+        <p><a href="#">修改密码</a></p>
+        <p><a href="#" class="close-panel">关闭</a></p>
+    </div>
+</div>
+<script type='text/javascript' src='../resources/js/libs/sui/zepto.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
+<script>
+    //当DOM加载好时调用
+    $(function () {
+        changeWH();
+    });
+
+    //改变内嵌网页的宽和高
+    function changeWH(){
+        $('#content').height($('.content').height()*0.989);
+        $('#content').width($('.content').width());
+    }
+
+    //当页面大小改变时调用
+    window.onresize=function(){
+        changeWH();
+    };
+
+    //动态加载模块的公共方法
+    function loadModule(arg1, arg2) {
+        var isSelf  = false;
+        $(arg1).parent().find('a').each(
+            function () {
+                if ($(this).hasClass('active')) {
+                    if (this === arg1){
+                        isSelf = true;
+                        return false;
+                    }
+                    $(this).removeClass('active');
+                }
+            }
+        );
+
+        if (isSelf)
+            return;
+        $(arg1).attr('class','tab-item active');
+        if (arg2 == 'shop') {
+            $('#content').attr('src','shopList');
+        }else if (arg2 == 'index') {
+            $('#content').attr('src','shopManagement?shopId=1');
+        }else {
+            $.toast('功能正在开发中~');
+        }
+    }
+</script>
+
+</body>
+</html>

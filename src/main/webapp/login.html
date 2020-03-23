@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录页面</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="./resources/css/sui/sm.css">
+    <link rel="stylesheet" type="text/css" href="./resources/css/sui/sm-extend.css">
+</head>
+<body>
+    <div class="content">
+        <div class="buttons-tab">
+            <a href="#tab1" class="tab-link active button">登录</a>
+            <a href="#tab2" class="tab-link button">注册</a>
+        </div>
+        <div class="content-block">
+            <div class="tabs">
+                <div id="tab1" class="tab active">
+                    <!--登录内容-->
+                    <div class="list-block">
+                        <ul>
+                            <!-- Text inputs -->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input id="login_name" type="text" placeholder="Your name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">密码</div>
+                                        <div class="item-input">
+                                            <input id="password" type="password" placeholder="Password" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-100"><a id="login" class="button button-big button-fill button-success">登录</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab">
+                    <!--注册内容-->
+                    <div class="list-block">
+                        <ul>
+                            <!-- Text inputs -->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-name"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="Your name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-email"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">邮箱</div>
+                                        <div class="item-input">
+                                            <input type="email" placeholder="E-mail">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title label">密码</div>
+                                        <div class="item-input">
+                                            <input type="password" placeholder="Password" class="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-100"><a href="#" class="button button-big button-fill button-success">注册</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='./resources/js/libs/sui/zepto.js' charset='utf-8'></script>
+    <script type='text/javascript' src='./resources/js/libs/sui/sm.js' charset='utf-8'></script>
+    <script type='text/javascript' src='./resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
+    <script>
+        $('#login').click(function () {
+            $.ajax({
+                url:'user/login',
+                type:'post',
+                data:{
+                    loginName:$('#login_name').val(),
+                    psw:$('#password').val()
+                },
+                dataType:'json',
+                success:function (result) {
+                    if (result.retCode==0){
+                        window.location.href=result.data.redirectUrl;
+                    }else {
+                        $.toast(result.message);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

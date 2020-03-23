@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商铺列表</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm-extend.css">
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current" id="pageFrontShopDetail">
+        <header class="bar bar-nav">
+            <h1 id="shop_name" class='title'></h1>
+        </header>
+        <div class="bar bar-header-secondary">
+            <div class="searchbar">
+                <a class="searchbar-cancel">取消</a>
+                <div class="search-input">
+                    <label class="icon icon-search" for="search_input"></label>
+                    <input type="search" id='search_input' placeholder='请输入店铺名称的关键字...'/>
+                </div>
+            </div>
+        </div>
+        <div class="content infinite-scroll infinite-scroll-bottom">
+        <!-- 店铺详情图片 -->
+        <div class="card demo-card-header-pic">
+            <div valign="bottom" class="card-header color-white no-border no-padding">
+                <img id="shop_img" class='card-cover' src="">
+            </div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                    <p id="create_time" class="color-gray"></p>
+                    <p id="shop_desc"></p>
+                </div>
+            </div>
+        </div>
+        <!-- 商品类别列表展示区 -->
+        <div class="content-block">
+            <div class="list-block">
+                <ul>
+                    <li>
+                        <div class="item-content">
+                            <div class="item-title label">查找条件</div>
+                            <div class="item-input">
+                                <input type="text" placeholder="请点击选择" id="picker_display" value="" readonly="">
+                                <input type="hidden" id="picker_val" value="" readonly="">
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="list-block" id="product_content">
+            </div>
+            <div class="infinite-scroll-preloader">
+                <div class="preloader"></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<script type='text/javascript' src='../resources/js/libs/sui/zepto.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/common/dynamicLoading.js'></script>
+<script type='text/javascript' src='../resources/js/frontend/dynamicLoadingFrontendJs.js'></script>
+</body>
+</html>

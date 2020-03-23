@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>店铺注册</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/sui/sm-extend.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current" id="pageShopOperation">
+        <header class="bar bar-nav">
+            <h1 class='title'>店铺信息</h1>
+        </header>
+        <div class="content">
+            <div class="list-block">
+                <ul>
+                    <!-- Text inputs -->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">店铺名称</div>
+                                <div class="item-input">
+                                    <input type="text" id="shop_name" placeholder="给你店铺取个爱称8~WoW">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 商铺分类 下拉列表-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">商铺分类</div>
+                                <div class="item-input">
+                                    <select id="shop_category">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 区域分类 下拉列表-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-gender"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">所属区域</div>
+                                <div class="item-input">
+                                    <select id="area_category">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 详细地址 text-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">详细地址</div>
+                                <div class="item-input">
+                                    <input type="text" id="shop_addr" placeholder="详细地址">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 联系电话 text-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">联系电话</div>
+                                <div class="item-input">
+                                    <input type="text" id="phone" placeholder="联系方式yo~">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 缩略图 上传控件-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">商铺缩略图</div>
+                                <div class="item-input">
+                                    <input id="shop_img" type="file" class="file" data-preview-file-type="text" >
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 店铺简介 多行文本-->
+                    <li class="align-top">
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-comment"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">店铺简介</div>
+                                <div class="item-input">
+                                    <textarea id="shop_desc" palceholder="店铺简介"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 验证码 kaptcha-->
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner">
+                                <div class="item-title label">验证码</div>
+                                <input type="text" id="j_captcha" placeholder="验证码">
+                                <div class="item-input">
+                                    <img id="captcha_img" alt="点击更换"  title="点击更换"
+                                        onclick="changeVerifyCode(this)" src="../Kaptcha">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="content-block">
+                <div class="row">
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-danger">返回</a></div>
+                    <div class="col-50"><a href="#" class="button button-big button-fill button-success" id="submit">提交</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../resources/js/libs/sui/zepto.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/libs/sui/sm-extend.js' charset='utf-8'></script>
+<script type='text/javascript' src='../resources/js/common/dynamicLoading.js'></script>
+<script type='text/javascript' src='../resources/js/shop/dynamicLoadingShopJs.js'></script>
+</body>
+</html>
