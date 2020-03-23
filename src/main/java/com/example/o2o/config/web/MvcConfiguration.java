@@ -1,10 +1,15 @@
 package com.example.o2o.config.web;
 
+import com.google.code.kaptcha.servlet.KaptchaServlet;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import javax.servlet.ServletException;
 
 /**
  * @author: create by bin
@@ -14,6 +19,33 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  **/
 @Configuration
 public class MvcConfiguration extends WebMvcConfigurationSupport{
+    @Value("${kaptcha.border}")
+    private String border;
+
+    @Value("${kaptcha.textproducer.font.color}")
+    private String fColor;
+
+    @Value("${kaptcha.image.width}")
+    private String width;
+
+    @Value("${kaptcha.textproducer.char.string}")
+    private String cString;
+
+    @Value("${kaptcha.image.height}")
+    private String height;
+
+    @Value("${kaptcha.textproducer.font.size}")
+    private String fSize;
+
+    @Value("${kaptcha.noise.color}")
+    private String nColor;
+
+    @Value("${kaptcha.textproducer.char.length}")
+    private String cLength;
+
+    @Value("${kaptcha.textproducer.font.names}")
+    private String fName;
+
     /**
      * 创建ViewResolver，视图解析器
      * @return
@@ -57,5 +89,25 @@ public class MvcConfiguration extends WebMvcConfigurationSupport{
         multipartResolver.setMaxUploadSize(1024*1024*20);
         multipartResolver.setMaxInMemorySize(1024*1024*20);
         return multipartResolver;
+    }
+
+    /**
+     * 添加kaptcha验证码
+     * @return
+     */
+    @Bean(name = "Kaptcha")
+    public ServletRegistrationBean servletRegistrationBean(){
+        //创建kaptchaServlet对象并且定义路由
+        ServletRegistrationBean servlet = new ServletRegistrationBean(new KaptchaServlet(),"/Kaptcha");
+        servlet.addInitParameter("kaptcha:border",border);//无边框
+        servlet.addInitParameter("kaptcha.textproducer.font.color",fColor);
+        servlet.addInitParameter("kaptcha.image.width",width);
+        servlet.addInitParameter("kaptcha.textproducer.char.string",cString);
+        servlet.addInitParameter("kaptcha.image.height",height);
+        servlet.addInitParameter("kaptcha.textproducer.font.size",fSize);
+        servlet.addInitParameter("kaptcha.noise.color",nColor);
+        servlet.addInitParameter("kaptcha.textproducer.char.length",cLength);
+        servlet.addInitParameter("kaptcha.textproducer.font.names",fName);
+        return servlet;
     }
 }
