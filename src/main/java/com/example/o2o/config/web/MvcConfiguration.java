@@ -1,5 +1,7 @@
 package com.example.o2o.config.web;
 
+import com.example.o2o.interceptor.shopAdmin.ShopLoginInterceptor;
+import com.example.o2o.interceptor.shopAdmin.ShopPermissionInterceptor;
 import com.google.code.kaptcha.servlet.KaptchaServlet;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -109,5 +111,31 @@ public class MvcConfiguration extends WebMvcConfigurationSupport{
         servlet.addInitParameter("kaptcha.textproducer.char.length",cLength);
         servlet.addInitParameter("kaptcha.textproducer.font.names",fName);
         return servlet;
+    }
+
+    /**
+     * 添加拦截器
+     * @param registry
+     */
+    @Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+        String interceptPath = "/shopAdmin/**";
+        //注册拦截器
+        InterceptorRegistration loginIR = registry.addInterceptor(new ShopLoginInterceptor());
+        //配置拦截的路径
+        loginIR.addPathPatterns(interceptPath);
+        //继续注册其他的拦截器
+        InterceptorRegistration permissionIR = registry.addInterceptor(new ShopPermissionInterceptor());
+        //配置拦截的路径
+        permissionIR.addPathPatterns(interceptPath);
+        //配置不拦截的路径
+        permissionIR.excludePathPatterns("/shopAdmin/index");
+        permissionIR.excludePathPatterns("/shopAdmin/shopList");
+        permissionIR.excludePathPatterns("/shopAdmin/getShopList");
+        permissionIR.excludePathPatterns("/shopAdmin/getShopInitInfo");
+        permissionIR.excludePathPatterns("/shopAdmin/registerShop");
+        permissionIR.excludePathPatterns("/shopAdmin/shopOperation");
+        permissionIR.excludePathPatterns("/shopAdmin/shopManagement");
+        permissionIR.excludePathPatterns("/shopAdmin/getShopManagementInfo");
     }
 }
